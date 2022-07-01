@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Coffee Classifier, by Duberly Guarnizo</title>
+</head>
+<body>
+<div class="container">
+    <div class="row text-center">
+        <h1>Coffee Classifier</h1>
+        <h2>By Duberly Guarnizo</h2>
+        <p>An application that helps you classify your coffee, made with Python, Flask and using binary persistence for
+            data storage</p>
+        <p><a class="btn btn-warning btn-sm" href="/load_demo">Load Demo Data</a></p>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h3>Instant Coffee List</h3>
+            <table class="table table-striped my-3 border border-primary">
+                <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>price</th>
+                    <th>color</th>
+                    <th>presentation</th>
+                    <th>brand</th>
+                    <th>caffeine level</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for instant_coffee in instant_coffee_list %}
+                    <tr>
+
+                        <td>{{ instant_coffee.name }}</td>
+                        <td>{{ instant_coffee.price }}</td>
+                        <td>{{ instant_coffee.color }}</td>
+                        <td>{{ instant_coffee.presentation }}</td>
+                        <td>{{ instant_coffee.brand }}</td>
+                        <td>{{ instant_coffee.caffeine_level }}</td>
+                        <td><a class="btn btn-outline-warning text-white" href="remove_coffee/{{ instant_coffee.name |urlencode }}">&#128465;</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col text-center">
+            <h3>Grain Coffee List</h3>
+            <table class="table table-striped my-3 border border-secondary">
+                <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>price</th>
+                    <th>color</th>
+                    <th>medium size</th>
+                    <th>weight</th>
+                    <th>caffeine level</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for grain_coffee in grain_coffee_list %}
+                    <tr>
+
+                        <td>{{ grain_coffee.name }}</td>
+                        <td>{{ grain_coffee.price }}</td>
+                        <td>{{ grain_coffee.color }}</td>
+                        <td>{{ grain_coffee.medium_size }}</td>
+                        <td>{{ grain_coffee.weight }}</td>
+                        <td>{{ grain_coffee.caffeine_level }}</td>
+                        <td><a class="btn btn-outline-warning text-white" href="remove_coffee/{{ grain_coffee.name|urlencode }}">&#128465;</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
